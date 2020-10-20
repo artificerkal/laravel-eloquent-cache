@@ -1,8 +1,8 @@
 <?php
 
-namespace Artificerkal\LaravelEloquentCache\Contracts\Connector;
+namespace Artificerkal\LaravelEloquentLikeCaching\Contracts\Connector;
 
-use Artificerkal\LaravelEloquentCache\Model;
+use Artificerkal\LaravelEloquentLikeCaching\Model;
 use phpDocumentor\Reflection\Types\Boolean;
 
 interface Connector

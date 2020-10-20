@@ -1,9 +1,9 @@
 <?php
 
-namespace Artificerkal\LaravelEloquentCache;
+namespace Artificerkal\LaravelEloquentLikeCaching;
 
-use Artificerkal\LaravelEloquentCache\Connector\Connector;
-use Artificerkal\LaravelEloquentCache\Connector\QueueConnector;
+use Artificerkal\LaravelEloquentLikeCaching\Connector\Connector;
+use Artificerkal\LaravelEloquentLikeCaching\Connector\QueueConnector;
 use Illuminate\Support\Traits\ForwardsCalls;
 use Jenssegers\Model\Model as BaseModel;
 
@@ -47,7 +47,7 @@ abstract class Model extends BaseModel
     /**
      * Get the Connector that will manage this model being stored in a key-value storage system
      *
-     * @return \Artificerkal\LaravelEloquentCache\Connector\Connector
+     * @return \Artificerkal\LaravelEloquentLikeCaching\Connector\Connector
      */
     public function cacheConnector()
     {

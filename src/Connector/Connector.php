@@ -1,9 +1,9 @@
 <?php
 
-namespace Artificerkal\LaravelEloquentCache\Connector;
+namespace Artificerkal\LaravelEloquentLikeCaching\Connector;
 
-use Artificerkal\LaravelEloquentCache\Contracts\Connector\Connector as ConnectorContract;
-use Artificerkal\LaravelEloquentCache\Model;
+use Artificerkal\LaravelEloquentLikeCaching\Contracts\Connector\Connector as ConnectorContract;
+use Artificerkal\LaravelEloquentLikeCaching\Model;
 use Illuminate\Support\Facades\Cache;
 
 class Connector implements ConnectorContract

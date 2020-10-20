@@ -1,6 +1,6 @@
 <?php
 
-namespace Artificerkal\LaravelEloquentCache\Connector;
+namespace Artificerkal\LaravelEloquentLikeCaching\Connector;
 
 
 class QueueConnector extends Connector

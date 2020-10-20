@@ -1,5 +1,5 @@
 {
-    "name": "artificerkal/laravel-eloquent-cache",
+    "name": "artificerkal/laravel-eloquent-ling-caching",
     "description": "An eloquent-like implementation of Laravel's cache functionality",
     "authors": [
         {
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Artificerkal\\LaravelEloquentCache\\": "src/"
+            "Artificerkal\\LaravelEloquentLikeCaching\\": "src/"
         }
     },
     "autoload-dev": {
