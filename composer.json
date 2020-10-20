@@ -1,5 +1,5 @@
 {
-    "name": "artificerkal/laravel-eloquent-ling-caching",
+    "name": "artificerkal/laravel-eloquent-like-caching",
     "description": "An eloquent-like implementation of Laravel's cache functionality",
     "authors": [
         {
