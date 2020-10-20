@@ -1,0 +1,29 @@
+{
+    "name": "artificerkal/laravel-eloquent-cache",
+    "description": "An eloquent-like implementation of Laravel's cache functionality",
+    "authors": [
+        {
+            "name": "Cole Shirley",
+            "email": "artificerkal@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "type": "package",
+    "require": {
+        "jenssegers/model": "^1.4",
+        "illuminate/support": "^8.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Artificerkal\\LaravelEloquentCache\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/stubs"
+        ]
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.2"
+    }
+}
