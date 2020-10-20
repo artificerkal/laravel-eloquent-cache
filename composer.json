@@ -11,7 +11,7 @@
     "type": "package",
     "require": {
         "jenssegers/model": "^1.4",
-        "illuminate/support": "^8.11"
+        "illuminate/support": "^8.0"
     },
     "autoload": {
         "psr-4": {
