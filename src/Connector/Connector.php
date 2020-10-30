@@ -33,7 +33,7 @@ class Connector implements ConnectorContract
         if (!($index = $this->index())->contains($id)) {
             Cache::put(
                 $this->model->getKeyPrefix() . '_index',
-                $index->concat($id)
+                $index->merge($id)
             );
         }
     }
@@ -50,9 +50,12 @@ class Connector implements ConnectorContract
 
     protected function all()
     {
+        $models = [];
+
         foreach ($this->index() as $id) {
             $models[] = $this->find($id);
         }
+
         return \collect($models);
     }
 
