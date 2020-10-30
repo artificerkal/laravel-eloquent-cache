@@ -71,7 +71,7 @@ class Connector implements ConnectorContract
         return $this->model;
     }
 
-    public function delete($id)
+    public function delete($id = \null)
     {
         $modelKey = $id ?? $this->model->getPrimaryKey();
         Cache::forget($this->model->getKeyPrefix() . $modelKey);
