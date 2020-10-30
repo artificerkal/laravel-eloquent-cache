@@ -11,5 +11,6 @@ interface Connector
     public function find($id);
     public function save();
     public function delete($id = \null);
+    public function create(array $attributes = []);
     public function updateOrCreate($id, array $values = []);
 }

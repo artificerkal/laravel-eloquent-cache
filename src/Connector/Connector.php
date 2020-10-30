@@ -79,6 +79,11 @@ class Connector implements ConnectorContract
         return true;
     }
 
+    public function create(array $attributes = [])
+    {
+        return $this->model->fill($attributes)->save();
+    }
+
     /**
      * Create or update a record matching the attributes, and fill it with values.
      *
