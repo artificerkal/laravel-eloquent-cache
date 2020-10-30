@@ -10,6 +10,6 @@ interface Connector
     public function __construct(Model $model);
     public function find($id);
     public function save();
-    public function delete();
+    public function delete($id);
     public function updateOrCreate($id, array $values = []);
 }
