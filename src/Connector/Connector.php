@@ -17,7 +17,7 @@ class Connector implements ConnectorContract
 
     /**
      * Get the model index
-     * 
+     *
      * @return \Illuminate\Support\Collection
      */
     protected function index()
@@ -33,7 +33,7 @@ class Connector implements ConnectorContract
         if (!($index = $this->index())->contains($id)) {
             Cache::put(
                 $this->model->getKeyPrefix() . '_index',
-                $index->merge($id)
+                $index->merge($id)->toArray()
             );
         }
     }
@@ -44,11 +44,11 @@ class Connector implements ConnectorContract
             $this->model->getKeyPrefix() . '_index',
             $this->index()->filter(function ($value) use ($id) {
                 return $value != $id;
-            })
+            })->toArray()
         );
     }
 
-    protected function all()
+    public function all()
     {
         $models = [];
 
@@ -66,15 +66,16 @@ class Connector implements ConnectorContract
 
     public function save()
     {
-        Cache::put($this->model->getKeyPrefix() . $this->model->id, $this->model);
-        $this->addToIndex($this->model->id);
+        Cache::put($this->model->getKeyPrefix() . $this->model->getPrimaryKey(), $this->model);
+        $this->addToIndex($this->model->getPrimaryKey());
         return $this->model;
     }
 
-    public function delete()
+    public function delete($id)
     {
-        Cache::forget($this->model->getKeyPrefix() . $this->model->id);
-        $this->removeFromIndex($this->model->id);
+        $modelKey = $id ?? $this->model->getPrimaryKey();
+        Cache::forget($this->model->getKeyPrefix() . $modelKey);
+        $this->removeFromIndex($this->model->getPrimaryKey());
         return true;
     }
 

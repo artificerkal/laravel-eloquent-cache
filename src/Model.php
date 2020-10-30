@@ -13,6 +13,13 @@ abstract class Model extends BaseModel
 
     protected $keyPrefix;
 
+    /**
+     * The primary key associated with the cache set.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
     protected $struct = 'stack';
 
     protected $structMap = [
@@ -58,5 +65,11 @@ abstract class Model extends BaseModel
     public function getKeyPrefix()
     {
         return ($this->keyPrefix ?? static::class) . ':';
+    }
+
+    public function getPrimaryKey()
+    {
+        $primaryKey = $this->primaryKey;
+        return $this->$primaryKey;
     }
 }
