@@ -1,7 +1,7 @@
 <?php
 
-namespace Artificerkal\LaravelEloquentLikeCaching\Connector;
+namespace Artificerkal\LaravelEloquentLikeCaching\Structures;
 
-class StackConnector extends ArrayConnector
+class StackStruct
 {
 }

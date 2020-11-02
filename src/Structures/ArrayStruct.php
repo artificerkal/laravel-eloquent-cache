@@ -6,7 +6,7 @@ use Artificerkal\LaravelEloquentLikeCaching\Model;
 use Exception;
 use Illuminate\Support\Facades\Cache;
 
-class ArrayConnector
+class ArrayStruct
 {
     protected $model;
 

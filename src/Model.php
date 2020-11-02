@@ -2,9 +2,9 @@
 
 namespace Artificerkal\LaravelEloquentLikeCaching;
 
-use Artificerkal\LaravelEloquentLikeCaching\Connector\ArrayConnector;
-use Artificerkal\LaravelEloquentLikeCaching\Connector\QueueConnector;
-use Artificerkal\LaravelEloquentLikeCaching\Connector\StackConnector;
+use Artificerkal\LaravelEloquentLikeCaching\Structures\ArrayStruct;
+use Artificerkal\LaravelEloquentLikeCaching\Structures\QueueStruct;
+use Artificerkal\LaravelEloquentLikeCaching\Structures\StackStruct;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\ForwardsCalls;
 use Jenssegers\Model\Model as BaseModel;
@@ -36,9 +36,9 @@ abstract class Model extends BaseModel
     protected $struct = 'array';
 
     protected $structMap = [
-        'array' => ArrayConnector::class,
-        // 'queue' => QueueConnector::class,
-        // 'stack' => StackConnector::class,
+        'array' => ArrayStruct::class,
+        // 'queue' => QueueStruct::class,
+        // 'stack' => StackStruct::class,
     ];
 
     /**
