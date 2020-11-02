@@ -59,13 +59,13 @@ abstract class Model extends BaseModel
 
     public function getKeyName()
     {
-        return $this->primaryKey;
+        return $this->keyName;
     }
 
     public function getKey()
     {
-        $primaryKey = $this->primaryKey;
-        return $this->$primaryKey;
+        $keyName = $this->getKeyName();
+        return $this->$keyName;
     }
 
     /**
