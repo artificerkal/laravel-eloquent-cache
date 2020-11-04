@@ -19,7 +19,7 @@ abstract class Model extends BaseModel
      *
      * @var string
      */
-    protected $keyName = 'id';
+    protected $keyName = 'key';
 
     /**
      * The model key prefix which is used for all models of this type. Defaults to the model class
@@ -89,25 +89,25 @@ abstract class Model extends BaseModel
     }
 
     /**
-     * Destroy the models for the given IDs.
+     * Destroy the models for the given keys.
      *
-     * @param  \Illuminate\Support\Collection|array|int|string  $ids
+     * @param  \Illuminate\Support\Collection|array|int|string  $keys
      * @return int
      */
-    public static function destroy($ids)
+    public static function destroy($keys)
     {
         $count = 0;
 
-        if ($ids instanceof Collection) {
-            $ids = $ids->all();
+        if ($keys instanceof Collection) {
+            $keys = $keys->all();
         }
 
-        $ids = is_array($ids) ? $ids : func_get_args();
+        $keys = is_array($keys) ? $keys : func_get_args();
 
         $instance = new static;
 
-        foreach ($ids as $id) {
-            if ($instance->find($id)->delete()) {
+        foreach ($keys as $key) {
+            if ($instance->find($key)->delete()) {
                 $count++;
             }
         }

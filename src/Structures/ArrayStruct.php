@@ -28,12 +28,12 @@ class ArrayStruct
     /**
      * Append an item to the model index
      */
-    protected function addToIndex($id)
+    protected function addToIndex($key)
     {
-        if (!($index = $this->index())->contains($id)) {
+        if (!($index = $this->index())->contains($key)) {
             Cache::put(
                 $this->model->getKeyPrefix() . '_index',
-                $index->merge($id)->toArray()
+                $index->merge($key)->toArray()
             );
         }
     }
@@ -41,12 +41,12 @@ class ArrayStruct
     /**
      * Remove an item from the model index
      */
-    protected function removeFromIndex($id)
+    protected function removeFromIndex($key)
     {
         Cache::put(
             $this->model->getKeyPrefix() . '_index',
-            $this->index()->filter(function ($value) use ($id) {
-                return $value != $id;
+            $this->index()->filter(function ($value) use ($key) {
+                return $value != $key;
             })->toArray()
         );
     }
@@ -60,8 +60,8 @@ class ArrayStruct
     {
         $models = [];
 
-        foreach ($this->index() as $id) {
-            $models[] = $this->find($id);
+        foreach ($this->index() as $key) {
+            $models[] = $this->find($key);
         }
 
         return \collect($models);
@@ -72,9 +72,9 @@ class ArrayStruct
      *
      * @return \Artificerkal\LaravelEloquentLikeCaching\Model
      */
-    public function find($id)
+    public function find($key)
     {
-        return Cache::get($this->model->getKeyPrefix() . $id);
+        return Cache::get($this->model->getKeyPrefix() . $key);
     }
 
     /**
@@ -139,13 +139,22 @@ class ArrayStruct
     /**
      * Create or update a record matching the attributes, and fill it with values.
      *
-     * @param  string  $id
+     * @param  string  $key
      * @param  array  $values
      * @return \App\Models\Redis\Model
      */
-    public function updateOrCreate($id, array $values = [])
+    public function updateOrCreate($key, array $values = [])
     {
-        return tap(Cache::get($this->model->getKeyPrefix() . $id) ?? $this->model->fill(['id' => $id]), function ($instance) use ($values) {
+        $model = Cache::get($this->model->getKeyPrefix() . $key) ?? tap(
+            $this->model,
+            function (&$model) use ($key) {
+                $keyName = $model->getKeyName();
+
+                $model->$keyName = $key;
+            }
+        );
+
+        return tap($model, function ($instance) use ($values) {
             $instance->fill($values)->save();
         });
     }
